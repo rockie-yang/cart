@@ -50,7 +50,7 @@ connect to database! Please try again later.");
 mysql_select_db($dbname);
 
 //Fetching from your database table.
-$query = "SELECT * FROM $items";
+$query = "SELECT * FROM items";
 $result = mysql_query($query);
 
 if ($result) {
