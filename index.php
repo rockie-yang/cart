@@ -5,7 +5,8 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
  </head>
  <body>
  <div class="navbar navbar-inverse navbar-static-top">
@@ -34,94 +35,44 @@
         </div>
     </div>
     <div class="container">
-    <?php
-//Variables for connecting to your database.
-//These variable values come from your hosting account.
-$hostname = "packit.db.12382201.hostedresource.com";
-$username = "packit";
-$dbname = "packit";
-
-//These variable values need to be changed by you before deploying
-$password = "Sndciag!1";
-
-//Connecting to your database
-mysql_connect($hostname, $username, $password) OR DIE ("Unable to
-connect to database! Please try again later.");
-mysql_select_db($dbname);
-
-//Fetching from your database table.
-$query = "SELECT * FROM items";
-$result = mysql_query($query);
-
-if ($result) {
-    while($row = mysql_fetch_array($result)) {
-        $name = $row["name"];
-        echo "Name $name<br>";
-    }
-}
-?>
     <div class="row">
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-                </a>
-            </div>
-        </div>
+    <?php
+		//Variables for connecting to your database.
+		//These variable values come from your hosting account.
+		$hostname = "packit.db.12382201.hostedresource.com";
+		$username = "packit";
+		$dbname = "packit";
+
+		//These variable values need to be changed by you before deploying
+		$password = "Sndciag!1";
+
+		//Connecting to your database
+		$link = mysql_connect($hostname, $username, $password);
+		mysql_set_charset('utf8', $link);
+		mysql_select_db($dbname);
+
+		//Fetching from your database table.
+		$query = "SELECT * FROM items";
+		$result = mysql_query($query);
+
+		if ($result) {
+		    while($row = mysql_fetch_array($result)) {
+		        $name = $row["name"];
+		        $description = $row["description"];
+		        echo '<div class="col-lg-3 col-md-4 col-xs-6 thumb">';
+		        echo '<a class="thumbnail" href="#">';
+		        echo '<img class="img-responsive" src="img/'.$name.'" height="300" width="200" alt="">';
+		        echo '<p>'.$description.'</p>';
+		        echo '</a></div>';
+		    }
+		}
+	?>
+
+</div>
+    
+            
+         
+        
     <div class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-text pull-left">Powered by</div>
@@ -130,7 +81,5 @@ if ($result) {
     </div>
 
 
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
  </body>
 </html>
