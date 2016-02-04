@@ -5,6 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
  </head>
@@ -36,6 +37,7 @@
     </div>
     <div class="container">
     <div class="row">
+        {{catalog}}
     <?php
 		//Variables for connecting to your database.
 		//These variable values come from your hosting account.
@@ -44,7 +46,7 @@
 		$dbname = "packit";
 
 		//These variable values need to be changed by you before deploying
-		$password = "Sndciag!1";
+		$password = "StSoNoOt!17";
 
 		//Connecting to your database
 		$link = mysql_connect($hostname, $username, $password);
@@ -59,10 +61,11 @@
 		    while($row = mysql_fetch_array($result)) {
 		        $name = $row["name"];
 		        $description = $row["description"];
-		        echo '<div class="col-lg-3 col-md-4 col-xs-6 thumb">';
+		        echo '<div class="col-lg-3 col-md-3 col-xs-4 thumb">';
 		        echo '<a class="thumbnail" href="#">';
-		        echo '<img class="img-responsive" src="img/'.$name.'" height="300" width="200" alt="">';
+		        echo '<img class="img-responsive" src="img/'.$name.'" width="320" height="240" alt="" style="display:block;">';
 		        echo '<p>'.$description.'</p>';
+                echo '<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>';
 		        echo '</a></div>';
 		    }
 		}

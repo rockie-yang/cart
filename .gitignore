@@ -1,5 +1,7 @@
 # Logs
 logs
+db.php
+test.html
 *.log
 npm-debug.log*
 .DS_Store
