@@ -9,7 +9,9 @@
 	$catalog = array();
 	if ($result) {
 	    while($row = mysql_fetch_array($result)) {
-	        $catalog[] = $row;
+	        $catalog[] = array(
+	        	'name' => $row['name'], 
+	        	'description' => $row['description']);
 	    }
 	}
 	echo json_encode($catalog);

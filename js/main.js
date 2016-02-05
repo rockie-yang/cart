@@ -3,10 +3,10 @@
     var ctrl = function($scope, $http) {
         $scope.items = [];
         
-        var url = 'snowriver.org/cart/catalog.php';
+        var url = '../cart/catalog.php';
 
         var onSuccess = function(response) {
-            $scope.catalog = response;
+            $scope.catalog = response.data;
         }
 
         var onError = function(reason) {
@@ -26,7 +26,7 @@
     // 
     // and pass it as array gives angular know that 
     // which parameter should inject in when invoke ctrl
-	app.controller('acontroller', ['$scope', '$http', ctrl]);
+	app.controller('cart', ['$scope', '$http', ctrl]);
 
 	// if don't think about minimize, the following way also work
     // app.controller('acontroller', ctrl);
