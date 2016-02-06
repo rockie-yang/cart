@@ -42,9 +42,9 @@
         </div>
         <div class="container">
             <div class="row" ng-controller="cart">
-                <div class="col-lg-3 col-md-3 col-xs-4 thumb" ng-repeat="item in catalog" height="240" >
+                <div class="col-lg-3 col-md-3 col-xs-4 thumb" ng-repeat="item in catalog">
                     <a class="thumbnail" href="#">
-                        <img class="image" ng-src="img/{{item.name}}" width="320" alt="">
+                        <img class="image" ng-src="img/{{item.name}}" alt="">
                         <p>{{item.description}}</p>
                         <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                     </a>
