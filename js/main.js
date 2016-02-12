@@ -53,6 +53,9 @@
             scope.$watch('$first', function(v) {
                 if (v) resizeItem();
             });
+            scope.$watch('$last', function(v) {
+                if (v) $(".glyphicon").css("top", "");
+            });
 
         };
     })

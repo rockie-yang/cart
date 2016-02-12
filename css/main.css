@@ -13,13 +13,20 @@ span.glyphicon {
     position: absolute;
 }
 
-.glyphicon-shopping-cart {
-    top: 0;
+.icon {
+	bottom: 80;
     left: 0;
+    top:;
+    position: absolute;
+}
+
+.glyphicon-shopping-cart {
+    bottom: 70;
+    left: 0;
+    top:;
     position: absolute;
     font-size: 2em;
     color: #ff7f0e;
-    /*z-index:2;*/
 }
 
 
