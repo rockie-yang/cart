@@ -4,14 +4,14 @@
 	//Fetching from your database table.
 	$query = "SELECT * FROM catalog";
 	$result = mysql_query($query);
-	header('Content-Type: application/json');
+	// header('Content-Type: application/json');
 	
 	$catalog = array();
 	if ($result) {
 	    while($row = mysql_fetch_array($result)) {
-	        $catalog[] = array(
+	    	$catalog[] = array(
 	        	'name' => $row['name'], 
-	        	'description' => $row['description']);
+	        	'description' => trim($row['description'], '"'));
 	    }
 	}
 	echo json_encode($catalog);

@@ -1,8 +1,17 @@
 (function() {
     var app = angular.module('app', []);
-    var ctrl = function($scope, $http) {
+    var resizeItem = function() {
+            var width = $(".thumbnail").first().width();
+
+            var height = width * 1.2;
+            $(".thumbnail").height(height);
+            console.log('resize to ' + width + ', ' + height);
+        }
+
+
+    var ctrl = function($scope, $http, $window) {
         $scope.items = [];
-        
+
         var url = '../cart/catalog.php';
 
         var onSuccess = function(response) {
@@ -15,6 +24,12 @@
 
         $http.get(url).then(onSuccess, onError);
 
+        angular.element(document).ready(function() {
+            resizeItem();
+        });
+
+        var w = angular.element($window);
+        w.bind('resize', resizeItem);
     }
 
     // the second parameter using an array
@@ -26,8 +41,19 @@
     // 
     // and pass it as array gives angular know that 
     // which parameter should inject in when invoke ctrl
-	app.controller('cart', ['$scope', '$http', ctrl]);
+    app.controller('cart', ['$scope', '$http', '$window', ctrl]);
 
-	// if don't think about minimize, the following way also work
+    app.directive('resizedirective', function() {
+      return function(scope, element, attrs) {
+
+        console.log('ROW: index = ', scope.$index);
+        scope.$watch('$first',function(v){
+          if (v) resizeItem();
+        });
+        
+      };
+    })
+
+    // if don't think about minimize, the following way also work
     // app.controller('acontroller', ctrl);
 }());
