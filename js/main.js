@@ -1,18 +1,23 @@
 (function() {
     var app = angular.module('app', []);
     var resizeItem = function() {
-            var width = $(".thumbnail").first().width();
+        var width = $(".thumbnail").first().width();
 
-            var height = width * 1.2;
-            $(".thumbnail").height(height);
-            console.log('resize to ' + width + ', ' + height);
-        }
+        var height = width * 1.2;
+        $(".thumbnail").height(height);
+        // console.log('resize to ' + width + ', ' + height);
+    }
 
 
     var ctrl = function($scope, $http, $window) {
         $scope.items = [];
 
         var url = '../cart/catalog.php';
+
+        $scope.addToCart = function(item) {
+            console.log(item);
+        }
+
 
         var onSuccess = function(response) {
             $scope.catalog = response.data;
@@ -44,14 +49,12 @@
     app.controller('cart', ['$scope', '$http', '$window', ctrl]);
 
     app.directive('resizedirective', function() {
-      return function(scope, element, attrs) {
+        return function(scope, element, attrs) {
+            scope.$watch('$first', function(v) {
+                if (v) resizeItem();
+            });
 
-        console.log('ROW: index = ', scope.$index);
-        scope.$watch('$first',function(v){
-          if (v) resizeItem();
-        });
-        
-      };
+        };
     })
 
     // if don't think about minimize, the following way also work
